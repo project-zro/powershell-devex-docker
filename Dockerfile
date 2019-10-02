@@ -1,8 +1,8 @@
 FROM mcr.microsoft.com/powershell:debian-stretch-slim
 
-# Install curl
+# Install misc tools via APT
 RUN apt-get update \
-    && apt-get install -y curl \
+    && apt-get install -y curl jq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
