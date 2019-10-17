@@ -6,10 +6,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# AWS PowerShell
+# AWS PowerShell Module
 RUN pwsh -Command Install-Module -Name AWSPowerShell.NetCore -Scope AllUsers -Force
 
-# Slack PowerShell
+# Slack PowerShell Module
 RUN pwsh -Command Install-Module -Name PSSlack -Scope AllUsers -Force
 
 # Kubectl
