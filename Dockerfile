@@ -7,7 +7,10 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # AWS PowerShell
-RUN pwsh -Command Install-Module AWSPowerShell.NetCore -Scope AllUsers -Force
+RUN pwsh -Command Install-Module -Name AWSPowerShell.NetCore -Scope AllUsers -Force
+
+# Slack PowerShell
+RUN pwsh -Command Install-Module -Name PSSlack -Scope AllUsers -Force
 
 # Kubectl
 ENV KUBECTL_VERSION=1.12.0
