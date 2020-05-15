@@ -7,13 +7,10 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # AWS PowerShell Module
-RUN pwsh -Command Install-Module -Name AWSPowerShell.NetCore -Scope AllUsers -Force
-
-# Slack PowerShell Module
-RUN pwsh -Command Install-Module -Name PSSlack -Scope AllUsers -Force
+RUN pwsh -Command Install-Module AWSPowerShell.NetCore -Confirm:$false -AcceptLicense -Force -RequiredVersion 4.0.5
 
 # Kubectl
-ENV KUBECTL_VERSION=1.12.0
+ENV KUBECTL_VERSION=1.16.0
 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o kubectl \
     && chmod +x kubectl \
