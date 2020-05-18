@@ -15,4 +15,4 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-RUN Install-Module AWSPowerShell.NetCore -Confirm:$false -AcceptLicense -Force -RequiredVersion 4.0.5
+RUN Install-Module AWSPowerShell.NetCore -Scope AllUsers -Confirm:$false -AcceptLicense -Force -RequiredVersion 4.0.5
