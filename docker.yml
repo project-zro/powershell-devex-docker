@@ -8,7 +8,7 @@ on:
   release:
     types: [published]
 
-  # Run tests for any PRs.
+  # Run tests for any PR.
   pull_request:
 
   # Manual run
