@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/powershell:debian-stretch-slim
+FROM mcr.microsoft.com/powershell:debian-bullseye-slim
 
 # Install misc tools via APT
 RUN apt-get update \
@@ -7,7 +7,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Kubectl
-ENV KUBECTL_VERSION=1.16.0
+ENV KUBECTL_VERSION=1.21.4
 
 RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl -o kubectl \
     && chmod +x kubectl \
@@ -15,4 +15,6 @@ RUN curl -L https://storage.googleapis.com/kubernetes-release/release/v${KUBECTL
 
 SHELL ["pwsh", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'SilentlyContinue';"]
 
-RUN Install-Module AWSPowerShell.NetCore -Scope AllUsers -Confirm:$false -AcceptLicense -Force -RequiredVersion 4.0.5
+ENV AWSPOWERSHELL_VERSION=4.1.14
+
+RUN Install-Module AWSPowerShell.NetCore -Scope AllUsers -Confirm:$false -AcceptLicense -Force -RequiredVersion ${AWSPOWERSHELL_VERSION}
