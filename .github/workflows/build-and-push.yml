@@ -43,7 +43,7 @@ jobs:
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: results.sarif
-   push:
+  push:
    # Ensure test job passes before pushing image.
    needs: test
    runs-on: ubuntu-latest
